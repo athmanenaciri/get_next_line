@@ -1,6 +1,3 @@
-lllllllmicro
-athmane
-
-
-dkdbkvdvd
-__OPENCL_MEMORY_SCOPE_DEVICE
+11
+12
+13
