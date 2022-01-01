@@ -1,0 +1,6 @@
+lllllllmicro
+athmane
+
+
+dkdbkvdvd
+__OPENCL_MEMORY_SCOPE_DEVICE
