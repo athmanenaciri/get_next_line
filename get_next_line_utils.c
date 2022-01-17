@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anaciri <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: anaciri <anaciri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 13:30:25 by anaciri           #+#    #+#             */
-/*   Updated: 2022/01/01 13:58:47 by anaciri          ###   ########.fr       */
+/*   Updated: 2022/01/17 14:01:13 by anaciri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,31 +38,40 @@ char	*ft_strchr(const char *s, int c)
 	return ((char *)s);
 }
 
+char	*ft_strcpy(char *dst, const char *src)
+{
+	int	i;
+
+	i = 0;
+	if (src == NULL)
+		return (NULL);
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}
+
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int		i;
-	int		l;
 	char	*k;
-	int		j;
 
 	if (!s2)
 		return (NULL);
 	if (!s1)
 	{
 		s1 = (char *)malloc(1 * sizeof(char));
+		if (!s1)
+			return (NULL);
 		s1[0] = '\0';
 	}
 	k = (char *) malloc (ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!k)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i])
-		k[j++] = s1[i++];
-	l = 0;
-	while (s2[l])
-		k[j++] = s2[l++];
-	k[j] = '\0';
+	ft_strcpy(k, s1);
+	ft_strcpy(k + ft_strlen(s1), s2);
 	free(s1);
 	return (k);
 }
@@ -72,13 +81,13 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	char	*p;
 	size_t	i;
 
-	if (!s)
+	if (s == NULL)
 		return (NULL);
 	if (len > ft_strlen(&s[start]))
 		p = malloc((ft_strlen(&s[start]) + 1) * sizeof(char));
 	else
 		p = malloc((len + 1) * sizeof(char));
-	if (!p)
+	if (p == NULL)
 		return (NULL);
 	if (start >= ft_strlen(s))
 		start = ft_strlen(s);

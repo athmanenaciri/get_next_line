@@ -6,7 +6,7 @@
 /*   By: anaciri <anaciri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 13:29:52 by anaciri           #+#    #+#             */
-/*   Updated: 2022/01/01 13:53:40 by anaciri          ###   ########.fr       */
+/*   Updated: 2022/01/17 15:25:18 by anaciri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*read_buff_size(int fd, char *lines)
 
 	i = 1;
 	bufer = malloc(BUFFER_SIZE + 1);
-	if (!bufer)
+	if (bufer == NULL)
 		return (NULL);
-	while (i && !(ft_strchr(lines, '\n')))
+	while (i && (ft_strchr(lines, '\n')) == '\0')
 	{
 		i = read(fd, bufer, BUFFER_SIZE);
 		if (i == -1)
@@ -41,7 +41,7 @@ char	*one_line(char *lines)
 	int	i;
 
 	i = 0;
-	if (!lines[i])
+	if (lines[i] == '\0')
 		return (NULL);
 	while (lines[i] != '\n' && lines[i])
 		i++;
@@ -56,7 +56,7 @@ char	*lines_rest(char *file_line)
 	j = 0;
 	while (file_line[j] != '\n' && file_line[j])
 		j++;
-	if (!file_line[j])
+	if (file_line[j] == '\0')
 	{
 		free(file_line);
 		return (NULL);
@@ -74,28 +74,9 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	file_line = read_buff_size(fd, file_line);
-	if (!file_line)
+	if (file_line == NULL)
 		return (NULL);
 	o_line = one_line(file_line);
 	file_line = lines_rest(file_line);
 	return (o_line);
 }
-
-//#include<stdio.h>
-//int main()
-//{
-	//int fd;
-	//fd = open( "test.c", O_RDONLY);
-    //char *str;
-   // while((str = get_next_line(fd)))
-   // {
-	//    printf ("%s", str);
-    //    free(str);
-   // }
-   // while(1);
-	//printf ("%s", get_next_line(fd));
-	//printf ("%s", get_next_line(fd));
-	//printf ("%s", get_next_line(fd));
-	//printf ("%s", get_next_line(fd));
-	//printf ("%s", get_next_line(fd));
-//}

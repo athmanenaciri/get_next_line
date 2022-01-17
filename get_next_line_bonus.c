@@ -6,7 +6,7 @@
 /*   By: anaciri <anaciri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 13:33:13 by anaciri           #+#    #+#             */
-/*   Updated: 2022/01/01 14:44:42 by anaciri          ###   ########.fr       */
+/*   Updated: 2022/01/17 11:58:23 by anaciri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,21 +80,3 @@ char	*get_next_line(int fd)
 	file_line[fd] = lines_rest(file_line[fd]);
 	return (o_line);
 }
-
-//#include<stdio.h>
-//int main()
-//{
-//	int fd1;
-//    int fd2;
-//    int fd3;
-//	fd1 = open( "test.c", O_RDONLY);
-//	fd2 = open( "test1.c", O_RDONLY);
-//	fd3 = open( "test2.c", O_RDONLY);
-//
-//    
-//	printf ("%s", get_next_line(fd1));
-//	printf ("%s", get_next_line(fd2));
-//	printf ("%s", get_next_line(fd1));
-//	printf ("%s", get_next_line(fd3));
-//	printf ("%s", get_next_line(fd1));
-//}

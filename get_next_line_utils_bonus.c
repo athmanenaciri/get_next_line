@@ -6,7 +6,7 @@
 /*   By: anaciri <anaciri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/31 13:33:51 by anaciri           #+#    #+#             */
-/*   Updated: 2022/01/01 14:14:58 by anaciri          ###   ########.fr       */
+/*   Updated: 2022/01/17 14:02:06 by anaciri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,31 +38,40 @@ char	*ft_strchr(const char *s, int c)
 	return ((char *)s);
 }
 
+char	*ft_strcpy(char *dst, const char *src)
+{
+	int	i;
+
+	i = 0;
+	if (src == NULL)
+		return (NULL);
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}
+
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int		i;
-	int		l;
 	char	*k;
-	int		j;
 
 	if (!s2)
 		return (NULL);
 	if (!s1)
 	{
 		s1 = (char *)malloc(1 * sizeof(char));
+		if (!s1)
+			return (NULL);
 		s1[0] = '\0';
 	}
 	k = (char *) malloc (ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!k)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i])
-		k[j++] = s1[i++];
-	l = 0;
-	while (s2[l])
-		k[j++] = s2[l++];
-	k[j] = '\0';
+	ft_strcpy(k, s1);
+	ft_strcpy(k + ft_strlen(s1), s2);
 	free(s1);
 	return (k);
 }
