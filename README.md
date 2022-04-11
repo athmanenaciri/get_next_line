@@ -10,4 +10,5 @@
 	on manipulating files for data management and persistence.
 	This project consists of coding a function that returns one line at a time from a text file.
 	
+
 [get_next_line.pdf](https://github.com/athmanenaciri/get_next_line/files/8463307/get_next_line.pdf)
